@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_sky"
+        tools:context=".ui.weatherdetails.WeatherDetailsFragment">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="@string/weather_details"
+            android:textColor="@color/black"
+            android:textSize="32sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_card"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="30dp"
+            android:background="@color/sky_light"
+            android:scaleType="fitEnd"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.RoundedCorner"
+            app:srcCompat="@drawable/ic_waves" />
+
+        <TextView
+            android:id="@+id/tv_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/abeezee"
+            android:textColor="@color/white"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/iv_card"
+            app:layout_constraintTop_toTopOf="@id/iv_card"
+            tools:text="29°C" />
+
+        <TextView
+            android:id="@+id/tv_city"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/abeezee"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tv_temp"
+            app:layout_constraintStart_toStartOf="@id/iv_card"
+            app:layout_constraintEnd_toStartOf="@id/tv_temp"
+            app:layout_constraintTop_toTopOf="@id/tv_temp"
+            tools:text="Islamabad" />
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/abeezee"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/tv_city"
+            app:layout_constraintTop_toBottomOf="@id/tv_city"
+            tools:text="Heavy Rain" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_bottom"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            app:layout_constraintTop_toBottomOf="@id/iv_card"
+            app:layout_constraintStart_toStartOf="@id/iv_card"
+            app:layout_constraintEnd_toEndOf="@id/iv_card"
+            app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="#3596E3"
+            android:layout_marginTop="20dp"
+            android:elevation="0dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_label_pressure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/abeezee"
+            android:textColor="@color/white"
+            android:elevation="1dp"
+            app:layout_constraintStart_toStartOf="@id/iv_card"
+            app:layout_constraintTop_toTopOf="@id/cv_bottom"
+            android:layout_marginTop="10dp"
+            android:text="@string/pressure" />
+
+        <TextView
+            android:id="@+id/tv_label_humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/abeezee"
+            android:textColor="@color/white"
+            android:elevation="1dp"
+            app:layout_constraintStart_toStartOf="@id/iv_card"
+            app:layout_constraintEnd_toEndOf="@id/cv_bottom"
+            app:layout_constraintTop_toTopOf="@id/cv_bottom"
+            android:layout_marginTop="10dp"
+            android:text="@string/humidity" />
+        <TextView
+            android:id="@+id/tv_label_visibility"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/abeezee"
+            android:textColor="@color/white"
+            android:elevation="1dp"
+            app:layout_constraintEnd_toEndOf="@id/iv_card"
+            app:layout_constraintTop_toTopOf="@id/cv_bottom"
+            android:layout_marginTop="10dp"
+            android:text="@string/visibility" />
+        <TextView
+            android:id="@+id/tv_pressure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/abeezee"
+            android:textColor="@color/black"
+            android:elevation="1dp"
+            app:layout_constraintStart_toStartOf="@id/tv_label_pressure"
+            app:layout_constraintEnd_toEndOf="@id/tv_label_pressure"
+            app:layout_constraintTop_toBottomOf="@id/tv_label_pressure"
+            android:layout_marginTop="12dp"
+            tools:text="50" />
+        <TextView
+            android:id="@+id/tv_humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/abeezee"
+            android:textColor="@color/black"
+            android:elevation="1dp"
+            app:layout_constraintStart_toStartOf="@id/tv_label_humidity"
+            app:layout_constraintTop_toBottomOf="@id/tv_label_humidity"
+            app:layout_constraintEnd_toEndOf="@id/tv_label_humidity"
+            android:layout_marginTop="12dp"
+            tools:text="40" />
+        <TextView
+            android:id="@+id/tv_visibility"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/abeezee"
+            android:textColor="@color/black"
+            android:elevation="1dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_label_visibility"
+            app:layout_constraintStart_toStartOf="@id/tv_label_visibility"
+            app:layout_constraintEnd_toEndOf="@id/tv_label_visibility"
+            android:layout_marginTop="12dp"
+            tools:text="20" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -14,3 +14,9 @@ dependencyResolutionManagement {
 }
 rootProject.name = "EnhanceITApp"
 include ':app'
+include ':shared:core'
+include ':shared:data:local'
+include ':shared:data:remote'
+include ':di'
+include ':features:dashboard'
+include ':shared:navigation'

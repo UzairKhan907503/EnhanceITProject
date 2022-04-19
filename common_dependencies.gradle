@@ -1,0 +1,55 @@
+buildscript {
+    ext {
+        room_version = '2.4.2'
+        hilt_version = '2.38.1'
+        android_core_version = '1.7.0'
+        app_compat_version = '1.4.1'
+        material_version = '1.5.0'
+        constraint_version = '2.1.3'
+        junit_version = '4.13.2'
+        android_junit_version = '1.1.3'
+        expresso_version = '3.4.0'
+        coroutine_version = "1.5.2"
+        ktx_version = '2.3.5'
+        fragment_ktx_version = '1.3.6'
+        retrofit_version = '2.9.0'
+        kotlin_serialization_version = '1.3.2'
+        logging_interceptor_version = '4.9.3'
+        kotlinx_converter_version = '0.8.0'
+        androidx_lifecycle_version = "2.4.1"
+        coil = "1.4.0"
+
+        commonDependencies = [
+                hiltKapt             : "com.google.dagger:hilt-android-compiler:$hilt_version",
+                hilt                 : "com.google.dagger:hilt-android:$hilt_version",
+                androidCore          : "androidx.core:core-ktx:$android_core_version",
+                appCompat            : "androidx.appcompat:appcompat:$app_compat_version",
+                material             : "com.google.android.material:material:$material_version",
+                constraintlayout     : "androidx.constraintlayout:constraintlayout:$constraint_version",
+                junit                : "junit:junit:$junit_version",
+                androidJunit         : "androidx.test.ext:junit:$android_junit_version",
+                expresso             : "androidx.test.espresso:espresso-core:$expresso_version",
+                coroutineAndroid     : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version",
+                coroutineCore        : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version",
+                navigationFragmentKtx: "androidx.navigation:navigation-fragment-ktx:${ktx_version}",
+                uiKtx                : "androidx.navigation:navigation-ui-ktx:${ktx_version}",
+                fragmentKtx          : "androidx.fragment:fragment-ktx:$fragment_ktx_version",
+                coil                 : "io.coil-kt:coil:$coil",
+                lifecycleViewModel   : "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidx_lifecycle_version"
+        ]
+
+        networkingDependencies = [
+                retrofit            : "com.squareup.retrofit2:retrofit:$retrofit_version",
+                kotlinxSerialization: "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlin_serialization_version",
+                loggingInterceptor  : "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version",
+                kotlinxConverter    : "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$kotlinx_converter_version"
+        ]
+
+        persistenceDependencies = [
+                runtime : "androidx.room:room-runtime:$room_version",
+                ktx     : "androidx.room:room-ktx:$room_version",
+                compiler: "androidx.room:room-compiler:$room_version",
+                testing : "androidx.room:room-testing:$room_version",
+        ]
+    }
+}

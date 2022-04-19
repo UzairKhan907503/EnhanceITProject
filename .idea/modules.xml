@@ -4,6 +4,15 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/EnhanceITApp.iml" filepath="$PROJECT_DIR$/.idea/modules/EnhanceITApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/EnhanceITApp.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/EnhanceITApp.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/di/EnhanceITApp.di.iml" filepath="$PROJECT_DIR$/.idea/modules/di/EnhanceITApp.di.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/EnhanceITApp.features.iml" filepath="$PROJECT_DIR$/.idea/modules/features/EnhanceITApp.features.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/dashboard/EnhanceITApp.features.dashboard.iml" filepath="$PROJECT_DIR$/.idea/modules/features/dashboard/EnhanceITApp.features.dashboard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/EnhanceITApp.shared.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/EnhanceITApp.shared.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/core/EnhanceITApp.shared.core.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/core/EnhanceITApp.shared.core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/data/EnhanceITApp.shared.data.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/data/EnhanceITApp.shared.data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/data/local/EnhanceITApp.shared.data.local.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/data/local/EnhanceITApp.shared.data.local.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/data/remote/EnhanceITApp.shared.data.remote.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/data/remote/EnhanceITApp.shared.data.remote.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/navigation/EnhanceITApp.shared.navigation.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/navigation/EnhanceITApp.shared.navigation.iml" />
     </modules>
   </component>
 </project>
