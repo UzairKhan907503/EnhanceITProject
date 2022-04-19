@@ -1,6 +1,6 @@
 # Welcome to Weather Application!
 
-It's an app built using the MVI, Repository Pattern and Clean Architecture on top of feature modules. It uses the [Weather API](https://api.worldweatheronline.com/premium/v1/weather.ashx) and displays weather details for specific city.
+It's an app built using the MVI, Repository Pattern and Clean Architecture on top of feature modules. It uses the [Weather API]( https://api.worldweatheronline.com/premium/v1/weather.ashx?key=b17430f61a27465ea77192310221304&q=Aqaba%2C%20Jordan&format=json) and displays weather details for specific city.
 
 ## Index
 
