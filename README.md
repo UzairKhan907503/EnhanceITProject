@@ -1,6 +1,6 @@
-# Welcome to Basic Restaurant!
+# Welcome to Weather Application!
 
-It's an app built using the MVVM, Repository Pattern and Clean Architecture. It uses the [RestaurantProducts API](http://mobcategories.s3-website-eu-west-1.amazonaws.com/) and displays all the products of the restaurant under specific categories.
+It's an app built using the MVI, Repository Pattern and Clean Architecture on top of feature modules. It uses the [Weather API](https://api.worldweatheronline.com/premium/v1/weather.ashx) and displays weather details for specific city.
 
 ## Index
 
