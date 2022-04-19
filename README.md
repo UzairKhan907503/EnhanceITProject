@@ -7,7 +7,6 @@ It's an app built using the MVVM, Repository Pattern and Clean Architecture. It 
 - [Key Features](#key-features)
 - [Architecture](#architecture)
 - [Modules](#modules)
-- [Screenshots](#screenshots)
 - [Libraries](#libraries)
 
 ## Key Features
