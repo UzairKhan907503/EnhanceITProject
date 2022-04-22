@@ -1,4 +1,4 @@
-package com.uzair.data.utils
+package com.enhanceit.core.utils
 
 import java.io.IOException
 import java.net.SocketTimeoutException

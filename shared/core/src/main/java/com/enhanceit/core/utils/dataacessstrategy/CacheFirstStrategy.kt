@@ -34,6 +34,7 @@ object CacheFirstStrategy : CachedDataAccessStrategy {
                 else if (remoteResponse is Resource.Invalid) {
                     emit(Resource.Invalid<T>(remoteResponse.message))
                 }
+
                 emitAll(cache.map { model ->
                     model?.let {
                         Resource.Valid(it)

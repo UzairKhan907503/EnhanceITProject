@@ -1,8 +1,8 @@
 package com.enhanceit.core.ui.base
 
 import com.enhanceit.remote.utils.Resource
-import com.uzair.data.utils.NetworkUtils.getErrorMessage
-import com.uzair.data.utils.NetworkUtils.getNetworkErrorMessage
+import com.enhanceit.core.utils.NetworkUtils.getErrorMessage
+import com.enhanceit.core.utils.NetworkUtils.getNetworkErrorMessage
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow

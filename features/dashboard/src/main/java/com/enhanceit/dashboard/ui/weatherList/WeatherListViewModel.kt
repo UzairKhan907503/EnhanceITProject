@@ -11,10 +11,7 @@ import com.enhanceit.dashboard.domain.usecases.WeatherDetailsUseCase
 import com.enhanceit.remote.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.consumeAsFlow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,7 +21,7 @@ class WeatherListViewModel @Inject constructor(
     app: Application
 ) : BaseViewModel() {
     private var intents = Channel<WeatherListEvents>()
-    val event get() = intents.consumeAsFlow()
+    val event get() = intents.receiveAsFlow()
     private val weatherState = MutableStateFlow<WeatherListStates>(WeatherListStates.Ideal)
     val state = weatherState.asStateFlow()
 

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.receiveAsFlow
 
 /**
@@ -15,7 +16,7 @@ abstract class BaseViewModel : ViewModel() {
     val progress get() = _progress.asStateFlow()
 
     val baseEventsChannel = Channel<BaseEvent>()
-    val baseEvents = baseEventsChannel.receiveAsFlow()
+    val baseEvents = baseEventsChannel.receiveAsFlow().distinctUntilChanged()
 
     fun showLoader() {
         _progress.value = true

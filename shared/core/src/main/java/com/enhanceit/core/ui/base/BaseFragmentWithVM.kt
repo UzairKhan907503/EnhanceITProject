@@ -3,6 +3,7 @@ package com.enhanceit.core.ui.base
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.viewModels
 import com.enhanceit.core.ext.launchWhenStarted
 import com.enhanceit.core.ext.showError
 import kotlinx.coroutines.flow.collect
@@ -30,12 +31,13 @@ abstract class BaseFragmentWithVM<T : ViewDataBinding, V : BaseViewModel> : Base
         }
         launchWhenStarted {
             getViewModel().baseEvents.collect { event ->
-                when(event){
+                when (event) {
                     is BaseViewModel.BaseEvent.EventError -> {
                         showError(event.msg)
                     }
-                    else -> {}}
+                    else -> {}
                 }
             }
+        }
     }
 }
