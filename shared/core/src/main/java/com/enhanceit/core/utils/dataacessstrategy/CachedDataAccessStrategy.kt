@@ -6,9 +6,9 @@ import kotlinx.coroutines.flow.StateFlow
 
 interface CachedDataAccessStrategy {
     suspend fun <T> performGetOperation(
-        shouldGetFromRemote: (StateFlow<T?>) -> Boolean,
-        getFromCache: (suspend () -> StateFlow<T?>),
+        shouldGetFromRemote: (T) -> Boolean,
+        getFromCache: ( suspend () -> Flow<T?>),
         getFromRemote: (() -> Flow<Resource<T>>),
         updateCache: (suspend (T) -> Unit)
-    ): StateFlow<Resource<T>>
+    ): Flow<Resource<T>>
 }

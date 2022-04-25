@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.enhanceit.core.ui.base.BaseViewModel
 import com.enhanceit.dashboard.R
 import com.enhanceit.dashboard.data.remote.models.requestmodels.WeatherInputModel
-import com.enhanceit.dashboard.domain.models.uimodels.WeatherInfo
 import com.enhanceit.dashboard.domain.usecases.WeatherDetailsUseCase
 import com.enhanceit.remote.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -77,10 +76,12 @@ class WeatherListViewModel @Inject constructor(
     }
 
     private suspend fun getAllData() {
-        val weatherList = weatherUseCase.getAllWeathers().value.sortedByDescending{
-            it.timestamp
+        weatherUseCase.getAllWeathers().collect { response ->
+            val weatherList = response.sortedByDescending {
+                it.timestamp
+            }
+            weatherState.value = WeatherListStates.WeatherDetailsFetched(weatherList)
         }
-        weatherState.value = WeatherListStates.WeatherDetailsFetched(weatherList)
     }
 
 

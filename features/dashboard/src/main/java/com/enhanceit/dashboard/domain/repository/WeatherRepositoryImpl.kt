@@ -1,5 +1,6 @@
 package com.enhanceit.dashboard.domain.repository
 
+import android.util.Log
 import com.enhanceit.core.ext.compareToCurrent
 import com.enhanceit.core.utils.dataacessstrategy.CachedDataAccessStrategy
 import com.enhanceit.dashboard.domain.datasources.local.WeatherInfoPersistenceDataSource
@@ -7,7 +8,9 @@ import com.enhanceit.dashboard.domain.datasources.remote.WeatherInfoRemoteDataSo
 import com.enhanceit.dashboard.data.remote.models.requestmodels.WeatherInputModel
 import com.enhanceit.dashboard.domain.models.uimodels.WeatherInfo
 import com.enhanceit.remote.utils.Resource
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
 class WeatherRepositoryImpl @Inject constructor(
@@ -18,22 +21,18 @@ class WeatherRepositoryImpl @Inject constructor(
     override suspend fun getWeatherDetails(
         dataAccessStrategy: CachedDataAccessStrategy,
         inputModel: WeatherInputModel
-    ): StateFlow<Resource<WeatherInfo>> {
+    ): Flow<Resource<WeatherInfo>> {
         return dataAccessStrategy.performGetOperation(
-            shouldGetFromRemote = {
-                it.value?.timestamp?.compareToCurrent() ?: true
+            shouldGetFromRemote = { localData ->
+                localData.timestamp.compareToCurrent()
             },
-            getFromCache = {
-                persistenceDataSource.getWeatherInfoForCity(inputModel.city)
-            },
-            getFromRemote = {
-                remoteDataSource.getWeatherInfoForCity(inputModel)
-            },
+            getFromCache = { persistenceDataSource.getWeatherInfoForCity(inputModel.city) },
+            getFromRemote = { remoteDataSource.getWeatherInfoForCity(inputModel) },
             updateCache = { updateCache(it) }
         )
     }
 
-    override suspend fun getAllWeathers(): StateFlow<List<WeatherInfo>> {
+    override suspend fun getAllWeathers(): Flow<List<WeatherInfo>> {
         return persistenceDataSource.getWeatherForAll()
     }
 

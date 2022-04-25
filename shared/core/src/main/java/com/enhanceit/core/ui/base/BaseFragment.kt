@@ -13,7 +13,7 @@ import com.enhanceit.core.ext.progressBar
 
 abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
     var binding: T by autoCleaned()
-    private var loader : AlertDialog by autoCleaned()
+    private var loader: AlertDialog by autoCleaned()
     abstract fun getLayoutId(): Int
 
     override fun onCreateView(
@@ -31,7 +31,7 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
     }
 
     private fun hideLoading() {
-        loader.hide()
+        loader.dismiss()
     }
 
     fun showLoader(show: Boolean) {

@@ -38,8 +38,6 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':shared:data:local')
-    implementation project(path: ':shared:data:remote')
     implementation project(path: ':shared:navigation')
     implementation project(path: ':shared:core')
     kapt commonDependencies.hiltKapt

@@ -1,9 +1,7 @@
 package com.enhanceit.core.utils.dataacessstrategy
 
 import com.enhanceit.remote.utils.Resource
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.*
-import kotlin.coroutines.coroutineContext
 
 /**
  * This implementation of [CachedDataAccessStrategy] emits an empty [Resource.Loading] first
@@ -15,36 +13,34 @@ import kotlin.coroutines.coroutineContext
 object CacheFirstStrategy : CachedDataAccessStrategy {
 
     override suspend fun <T> performGetOperation(
-        shouldGetFromRemote: (StateFlow<T?>) -> Boolean,
-        getFromCache: (suspend () -> StateFlow<T?>),
+        shouldGetFromRemote: (T) -> Boolean,
+        getFromCache: (suspend () -> Flow<T?>),
         getFromRemote: (() -> Flow<Resource<T>>),
         updateCache: (suspend (T) -> Unit)
-    ): StateFlow<Resource<T>> = flow {
+    ): Flow<Resource<T>> = flow {
 
-        val cache = getFromCache()
-        if (shouldGetFromRemote(cache).not()) {
-            emit(Resource.Valid(cache.value!!))
-            return@flow
-        }
-
-        getFromRemote().collect { remoteResponse ->
-            if (remoteResponse !is Resource.Loading) {
-                if (remoteResponse is Resource.Valid)
-                    updateCache(remoteResponse.data)
-                else if (remoteResponse is Resource.Invalid) {
-                    emit(Resource.Invalid<T>(remoteResponse.message))
+        getFromCache().collect { cache ->
+            cache?.let {
+                if (shouldGetFromRemote(it).not()) {
+                    emit(Resource.Valid(it))
                 }
+            } ?: kotlin.run {
+                getFromRemote().collect { remoteResponse ->
+                    when (remoteResponse) {
+                        is Resource.Valid -> updateCache(remoteResponse.data)
+                        is Resource.Invalid -> emit(Resource.Invalid<T>(remoteResponse.message))
+                        else -> emit(Resource.Loading())
 
-                emitAll(cache.map { model ->
-                    model?.let {
-                        Resource.Valid(it)
-                    } ?: Resource.Invalid("")
-                })
+                    }
+                }
             }
+
         }
-    }.stateIn(
-        CoroutineScope(coroutineContext),
-        SharingStarted.Eagerly,
-        Resource.Loading()
-    )
+
+        getFromCache().collect { response ->
+            response?.let {
+                emit(Resource.Valid(it))
+            } ?: Resource.Invalid<T>("")
+        }
+    }
 }
