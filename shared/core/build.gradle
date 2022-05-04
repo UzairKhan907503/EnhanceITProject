@@ -41,9 +41,6 @@ dependencies {
     api commonDependencies.appCompat
     api commonDependencies.material
     api commonDependencies.constraintlayout
-    testImplementation commonDependencies.junit
-    androidTestImplementation commonDependencies.androidJunit
-    androidTestImplementation commonDependencies.expresso
     kapt commonDependencies.hiltKapt
     api commonDependencies.hilt
     api commonDependencies.coroutineCore

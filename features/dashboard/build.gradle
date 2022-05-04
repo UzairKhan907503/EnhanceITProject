@@ -43,4 +43,19 @@ dependencies {
     kapt commonDependencies.hiltKapt
     implementation commonDependencies.hilt
     implementation commonDependencies.lifecycleViewModel
+
+    //test
+    testImplementation testingDependencies.junit
+    testImplementation testingDependencies.coroutineTest
+    androidTestImplementation testingDependencies.coroutineTest
+    testImplementation testingDependencies.googleTruth
+    androidTestImplementation testingDependencies.googleTruth
+    testImplementation testingDependencies.mockito
+    androidTestImplementation testingDependencies.androidJunit
+    testImplementation testingDependencies.archCore
+    androidTestImplementation testingDependencies.archCore
+    androidTestImplementation testingDependencies.androidxRunner
+    testImplementation testingDependencies.testCore
+    testImplementation testingDependencies.mockServer
+    androidTestImplementation testingDependencies.mockServer
 }

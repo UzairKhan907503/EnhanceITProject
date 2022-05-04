@@ -32,7 +32,7 @@ fun WeatherInfo.fromDomain(): WeatherEntity {
     )
 }
 
-fun WeatherResponseDTO.toDomainModel() = weatherInfo.currentCondition[0].run {
+fun WeatherResponseDTO.toDomainModel(millis : String? = null) = weatherInfo.currentCondition[0].run {
     WeatherInfo(
         cityName = weatherInfo.request[0].query,
         visibility = visibility,
@@ -42,7 +42,7 @@ fun WeatherResponseDTO.toDomainModel() = weatherInfo.currentCondition[0].run {
         pressure = pressure,
         weatherDesc = weatherDesc[0].value,
         weatherIconUrl = weatherIconUrl[0].value,
-        timestamp = System.currentTimeMillis().toString()
+        timestamp = millis ?: System.currentTimeMillis().toString()
     )
 }
 

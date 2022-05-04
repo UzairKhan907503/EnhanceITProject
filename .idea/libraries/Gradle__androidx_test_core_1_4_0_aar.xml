@@ -1,15 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.test:core:1.4.0@aar">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/d0c9de8f34af6b7ebff7f4fe0e9710ff/transformed/core-1.4.0/res" />
-      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/9d7347b80935ec4e5d0d8b22642968ce/transformed/core-1.4.0/res" />
-      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/005b046081332466b01a982d50286259/transformed/core-1.4.0/res" />
-      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/74fe2ff2e99218e944f82a96c41ede55/transformed/core-1.4.0/res" />
-      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/ba46766ab54ae4425ab781007aff699d/transformed/core-1.4.0/res" />
-      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/1e6b83146b982d3d1599bab1a1cd58c6/transformed/core-1.4.0/res" />
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/transforms-3/89db1ff79961a368dcd81d3cef2b58da/transformed/core-1.4.0/jars/classes.jar!/" />
       <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/89db1ff79961a368dcd81d3cef2b58da/transformed/core-1.4.0/res" />
       <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/89db1ff79961a368dcd81d3cef2b58da/transformed/core-1.4.0/AndroidManifest.xml" />
-      <root url="jar://$PROJECT_DIR$/../.gradle/caches/transforms-3/89db1ff79961a368dcd81d3cef2b58da/transformed/core-1.4.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/androidx.test/core/1.4.0/96b4d161def059d92989a352500d05d215c33d5e/core-1.4.0-javadoc.jar!/" />

@@ -11,7 +11,6 @@ import com.enhanceit.dashboard.R
 import com.enhanceit.dashboard.databinding.FragmentWeatherListBinding
 import com.enhanceit.dashboard.ui.weatherList.adapter.WeatherListAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
@@ -20,13 +19,21 @@ class WeatherListFragment :
     private val mViewModel by viewModels<WeatherListViewModel>()
     private var adapter: WeatherListAdapter by autoCleaned()
 
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+            mViewModel.getAllData()
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initObservers()
         adapter = WeatherListAdapter(getViewModel().onItemClicked)
         binding.rvCities.adapter = adapter
         binding.searchView.apply {
-            doOnSubmit(getViewModel().onSearchClicked)
+            doOnSubmit{
+                hideKeyboard()
+                getViewModel().onSearchClicked(it)
+            }
         }
 
     }
@@ -42,6 +49,9 @@ class WeatherListFragment :
                             )
                         )
                     }
+                    WeatherListEvents.ItemAdded -> {
+                        binding.rvCities.smoothScrollToPosition(0)
+                    }
                 }
             }
         }
@@ -51,9 +61,6 @@ class WeatherListFragment :
                 when (it) {
                     is WeatherListStates.WeatherDetailsFetched -> {
                         adapter.submitList(it.cities)
-                        hideKeyboard()
-                        delay(50)
-                        binding.rvCities.smoothScrollToPosition(0)
                     }
                     else -> {}
                 }

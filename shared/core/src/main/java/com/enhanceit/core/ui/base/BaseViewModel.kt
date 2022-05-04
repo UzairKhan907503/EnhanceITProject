@@ -15,7 +15,7 @@ abstract class BaseViewModel : ViewModel() {
     private val _progress = MutableStateFlow(false)
     val progress get() = _progress.asStateFlow()
 
-    val baseEventsChannel = Channel<BaseEvent>()
+    private val baseEventsChannel = Channel<BaseEvent>()
     val baseEvents = baseEventsChannel.receiveAsFlow().distinctUntilChanged()
 
     fun showLoader() {
@@ -30,12 +30,7 @@ abstract class BaseViewModel : ViewModel() {
         baseEventsChannel.send(BaseEvent.EventError(error ?: ""))
     }
 
-    suspend fun sendSuccess(msg: String) {
-        baseEventsChannel.send(BaseEvent.EventSuccess(msg))
-    }
-
     sealed class BaseEvent {
         data class EventError(val msg: String = "") : BaseEvent()
-        data class EventSuccess(val msg: String = "") : BaseEvent()
     }
 }

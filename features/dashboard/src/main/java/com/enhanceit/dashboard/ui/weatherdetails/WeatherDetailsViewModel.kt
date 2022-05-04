@@ -36,9 +36,8 @@ class WeatherDetailsViewModel @Inject constructor(
                 }
                 is Resource.Invalid -> {
                     hideLoader()
-                    if (it.message.isNotBlank()) {
-                        sendError(it.message)
-                    }
+                    sendError(it.message)
+
                 }
                 is Resource.Loading -> {
                     showLoader()

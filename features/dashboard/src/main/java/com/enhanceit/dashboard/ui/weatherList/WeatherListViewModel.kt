@@ -10,6 +10,7 @@ import com.enhanceit.dashboard.domain.usecases.WeatherDetailsUseCase
 import com.enhanceit.remote.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -22,7 +23,7 @@ class WeatherListViewModel @Inject constructor(
     private var intents = Channel<WeatherListEvents>()
     val event get() = intents.receiveAsFlow()
     private val weatherState = MutableStateFlow<WeatherListStates>(WeatherListStates.Ideal)
-    val state = weatherState.asStateFlow()
+    val state get() = weatherState.asStateFlow()
 
     private val defaultList = listOf(
         app.getString(R.string.amman),
@@ -36,53 +37,56 @@ class WeatherListViewModel @Inject constructor(
         }
     }
     val onSearchClicked: (String) -> Unit = { city ->
-        getCityWeather(city)
-    }
-
-    init {
         viewModelScope.launch {
-            fetchDefaultDetails()
+            getCityWeather(city)
         }
     }
 
-    private fun fetchDefaultDetails() = viewModelScope.launch {
-        defaultList.forEach {
-            getCityWeather(it)
+    private suspend fun fetchDefaultDetails(list: List<String> = defaultList) {
+        coroutineScope {
+            list.forEach {
+                launch { getCityWeather(it) }
+            }
         }
     }
 
 
-    private fun getCityWeather(city: String) {
+    private suspend fun getCityWeather(city: String) {
         showLoader()
-        viewModelScope.launch {
-            weatherUseCase.getWeatherDetails(WeatherInputModel(city)).collect {
-                when (it) {
-                    is Resource.Invalid -> {
-                        hideLoader()
-                        if (it.message.isNotBlank()) {
-                            sendError(it.message)
-                        }
+        weatherUseCase.getWeatherDetails(WeatherInputModel(city)).collect {
+            when (it) {
+                is Resource.Invalid -> {
+                    hideLoader()
+                    if (it.message.isNotBlank()) {
+                        sendError(it.message)
                     }
-                    is Resource.Valid -> {
-                        hideLoader()
-                        getAllData()
-                    }
-                    is Resource.Loading -> {
-                        showLoader()
-                    }
+                }
+                is Resource.Loading -> {
+                    showLoader()
+                }
+                else -> {
+                    hideLoader()
                 }
             }
         }
     }
 
-    private suspend fun getAllData() {
+    fun getAllData() = viewModelScope.launch {
         weatherUseCase.getAllWeathers().collect { response ->
-            val weatherList = response.sortedByDescending {
-                it.timestamp
+            if (response.isEmpty()) {
+                fetchDefaultDetails()
+                return@collect
             }
-            weatherState.value = WeatherListStates.WeatherDetailsFetched(weatherList)
+
+            response.run {
+                val list = sortedByDescending { it.timestamp }
+                weatherState.value = WeatherListStates.WeatherDetailsFetched(list)
+                intents.send(WeatherListEvents.ItemAdded)
+            }
+            hideLoader()
         }
     }
+
 
 
 }

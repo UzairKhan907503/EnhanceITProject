@@ -1,15 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.test.services:storage:1.4.0@aar">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/557f4ac37a62d73c3c15f3b871d05865/transformed/storage-1.4.0/res" />
-      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/4c01496bfaaaca5726539efb90f05f74/transformed/storage-1.4.0/res" />
-      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/b5e2e22609097b07a7c542cf06cae148/transformed/storage-1.4.0/res" />
-      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/c4c281caf96ea1f2a3bfda9ccfde3f7c/transformed/storage-1.4.0/res" />
-      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/f7d337d51757bb5c146f275ee713cdd3/transformed/storage-1.4.0/res" />
-      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/7bcfa54c5b2da29aa7230476ae82bef0/transformed/storage-1.4.0/res" />
-      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/211562c0fd2a2c5ccbd2a9b1f7cec7e5/transformed/storage-1.4.0/AndroidManifest.xml" />
-      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/211562c0fd2a2c5ccbd2a9b1f7cec7e5/transformed/storage-1.4.0/res" />
       <root url="jar://$PROJECT_DIR$/../.gradle/caches/transforms-3/211562c0fd2a2c5ccbd2a9b1f7cec7e5/transformed/storage-1.4.0/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/211562c0fd2a2c5ccbd2a9b1f7cec7e5/transformed/storage-1.4.0/res" />
+      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/211562c0fd2a2c5ccbd2a9b1f7cec7e5/transformed/storage-1.4.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

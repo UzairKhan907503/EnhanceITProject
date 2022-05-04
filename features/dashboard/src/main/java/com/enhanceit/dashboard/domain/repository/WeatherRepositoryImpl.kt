@@ -1,17 +1,15 @@
 package com.enhanceit.dashboard.domain.repository
 
-import android.util.Log
 import com.enhanceit.core.ext.compareToCurrent
-import com.enhanceit.core.utils.dataacessstrategy.CachedDataAccessStrategy
+import com.enhanceit.core.utils.dataacessstrategy.cacheFirstStrategy
 import com.enhanceit.dashboard.domain.datasources.local.WeatherInfoPersistenceDataSource
 import com.enhanceit.dashboard.domain.datasources.remote.WeatherInfoRemoteDataSource
 import com.enhanceit.dashboard.data.remote.models.requestmodels.WeatherInputModel
 import com.enhanceit.dashboard.domain.models.uimodels.WeatherInfo
 import com.enhanceit.remote.utils.Resource
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
+
 
 class WeatherRepositoryImpl @Inject constructor(
     private val remoteDataSource: WeatherInfoRemoteDataSource,
@@ -19,12 +17,11 @@ class WeatherRepositoryImpl @Inject constructor(
 ) : WeatherRepository {
 
     override suspend fun getWeatherDetails(
-        dataAccessStrategy: CachedDataAccessStrategy,
         inputModel: WeatherInputModel
     ): Flow<Resource<WeatherInfo>> {
-        return dataAccessStrategy.performGetOperation(
+        return cacheFirstStrategy(
             shouldGetFromRemote = { localData ->
-                localData.timestamp.compareToCurrent()
+                localData?.timestamp?.compareToCurrent() ?: true
             },
             getFromCache = { persistenceDataSource.getWeatherInfoForCity(inputModel.city) },
             getFromRemote = { remoteDataSource.getWeatherInfoForCity(inputModel) },

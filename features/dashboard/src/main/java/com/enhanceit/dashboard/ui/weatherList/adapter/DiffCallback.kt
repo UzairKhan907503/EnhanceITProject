@@ -8,10 +8,10 @@ class DiffCallback : DiffUtil.ItemCallback<WeatherInfo>() {
     override fun areItemsTheSame(
         oldItem: WeatherInfo,
         newItem: WeatherInfo
-    ) = oldItem.hashCode() == newItem.hashCode()
+    ) = oldItem.cityName == newItem.cityName
 
     override fun areContentsTheSame(
         oldItem: WeatherInfo,
         newItem: WeatherInfo
-    ) = oldItem.hashCode() == newItem.hashCode()
+    ) = oldItem.timestamp == newItem.timestamp
 }
